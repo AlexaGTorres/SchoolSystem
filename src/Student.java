@@ -1,4 +1,4 @@
-public class Student implements Comparable<Student>
+public class Student
 {
     //Variables
     private int id;
@@ -60,16 +60,5 @@ public class Student implements Comparable<Student>
         School.updateTotalMoneyEarned(feesPaid);
     }
 
-    @Override
-    public int compareTo(Student other)
-    {
-        int compareResult = this.name.compareTo(other.name);
-
-        return compareResult;
-    }
-
-    public String toString ()
-    {
-        return this.name;
-    }
+  
 }//End class Student

@@ -3,4 +3,6 @@ My program gets teachers names, IDs, and salary, students names, IDs, and grade.
 has earned after paying the salary of a few teachers and some students paying fees.
 
 How to play:
-Enter 2 teacher names one at a time, 
+Enter 2 teacher names one at a time, enter their salaries in the same order/way, and enter 2 student names one at a time. It will then ask you which 
+student should pay fees, you enter the name from the previous names entered. After it will ask how much the student should pay and you have to enter
+a value. Then it will ask which teacher should get paid and you enter a name you previously entered.

@@ -2,3 +2,5 @@ Description:
 My program gets teachers names, IDs, and salary, students names, IDs, and grade. It puts them into a list and calculates the amount of money the school 
 has earned after paying the salary of a few teachers and some students paying fees.
 
+How to play:
+Enter 2 teacher names one at a time, 

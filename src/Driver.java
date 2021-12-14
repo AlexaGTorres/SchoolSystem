@@ -1,58 +1,104 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Driver
 {
     public static void main (String [] args)
     {
-        Teacher Rioux = new Teacher ("Rioux", 12345, 400);
-        Teacher Caza = new Teacher ("Caza", 9485745, 150);
-        Teacher Martinez = new Teacher ("Martinez", 39857564, 420);
+        Scanner input = new Scanner (System.in);
+
+        //Teachers last names
+        System.out.println ("Enter 2 teachers' last names and press enter after each.");
+        String lastNameT1 = input.nextLine();
+        String lastNameT2 = input.nextLine();
+
+        //Teachers salaries
+        System.out.println ("Enter 2 salaries for the teachers and press enter after each.");
+        int salaryT1 = input.nextInt();
+        int salaryT2 = input.nextInt();
+
+        //Students first names
+        System.out.println("Enter 2 students' first names and press enter after each.");
+        String firstNameS1 = input.next();
+        String firstNameS2 = input.next();
+
+        //Create
+        Student student1 = new Student (firstNameS1);
+        Student student2 = new Student (firstNameS2);
+
+        Teacher teacher1 = new Teacher (lastNameT1, salaryT1);
+        Teacher teacher2 = new Teacher (lastNameT2, salaryT2);
+
+        //List
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(student1);
+        studentList.add(student2);
 
         List<Teacher> teacherList = new ArrayList<>();
-        teacherList.add(Rioux);
-        teacherList.add(Caza);
-        teacherList.add(Martinez);
-
-        Student Alexa = new Student ("Alexa", 910939437, 11);
-        Student Lily = new Student ("Lily", 910934895, 10);
-        Student Bibian = new Student ("Bibian", 910939485, 9);
-
-        List<Student> studentList = new ArrayList<>();
-        studentList.add(Alexa);
-        studentList.add(Lily);
-        studentList.add(Bibian);
+        teacherList.add(teacher1);
+        teacherList.add(teacher2);
 
         School vvhs = new School(teacherList, studentList);
 
-        Bibian.payFees(2000);
-        Lily.payFees(5000);
+        List<String> tList = new ArrayList<>();
+        tList.add(lastNameT1);
+        tList.add(lastNameT2);
 
-        System.out.println (Rioux.getSalary());
-        System.out.println ("VVHS has earned $" + vvhs.getTotalMoneyEarned());
 
-        System.out.println ("School pays salary...");
+        List<String> sList = new ArrayList<>();
+        sList.add(firstNameS1);
+        sList.add(firstNameS2);
 
-        Rioux.receiveSalary(Rioux.getSalary());
-        System.out.println ("VVHS has paid a salary and now has $" + vvhs.getTotalMoneyEarned());
+        System.out.println ("Which student should pay fees?");
+        String studentFeesPay = input.next();
 
-        Martinez.receiveSalary(Martinez.getSalary());
-        System.out.println ("VVHS has paid a salary and now has $" + vvhs.getTotalMoneyEarned());
-
-        Student[] studentList1 = new Student[3];
-
-        studentList1[0] = Alexa;
-        studentList1[1] = Lily;
-        studentList1[2] = Bibian;
-
-        Arrays.sort(studentList1);
-
-        System.out.println ("Student names in alphabet order: ");
-        for (int i = 0; i < studentList1.length; i++)
+        if (sList.contains(studentFeesPay))
         {
-            System.out.print (studentList1[i] + " ");
+            if (studentFeesPay.equals(firstNameS1))
+            {
+                System.out.println ("How much should the student pay for fees.");
+                int fees1 = input.nextInt();
+                student1.payFees(fees1);
+            }
+            else if (studentFeesPay.equals(firstNameS2))
+            {
+                System.out.println ("How much should the student pay for fees.");
+                int fees2 = input.nextInt();
+                student2.payFees(fees2);
+            }
         }
+        else
+        {
+            System.out.println ("Invalid");
+        }
+
+        System.out.println ("VVHS has earned $" + vvhs.getTotalMoneyEarned());//Test
+
+        System.out.println ("Enter a teacher that should get paid.");
+        String pay1 = input.next();
+
+        teacher1.getSalary();
+        teacher2.getSalary();
+
+        if (tList.contains(pay1))
+        {
+            if (pay1.equals(lastNameT1))
+            {
+                teacher1.receiveSalary(teacher1.getSalary());
+            }
+            else if (pay1.equals(lastNameT2))
+            {
+                teacher2.receiveSalary(teacher2.getSalary());
+            }
+        }
+        else
+        {
+            System.out.println ("Invalid");
+        }
+
+        System.out.println (vvhs.getTotalMoneyEarned() + vvhs.getTotalMoneySpent());
+
     }//End main
     
 }//End class Driver
